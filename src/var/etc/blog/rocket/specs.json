@@ -1,0 +1,233 @@
+{
+    "types": {
+    	"blog-blog-article": {
+            "nature": "entity",
+            "entity": "blog\\bo\\BlogArticle",
+            "dataSourceName": null,
+            "label": "Blog Artikel",
+            "pluralLabel": "Blog Artikel",
+            "iconType": null,
+            "filterData": {
+                "useAnd": true,
+                "items": [],
+                "groups": []
+            },
+            "defaultSort": [],
+            "props": {
+                "title": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\string\\StringEiProp",
+                    "props": {
+                        "displayInOverview": true,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": true,
+                        "draftable": false,
+                        "maxlength": "255",
+                        "multiline": false
+                    },
+                    "label": "Title",
+                    "objectProperty": "title",
+                    "entityProperty": "title"
+                },
+                "pathPart": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\string\\PathPartEiProp",
+                    "props": {
+                        "displayInOverview": false,
+                        "displayInDetailView": false,
+                        "displayInEditView": true,
+                        "displayInAddView": false,
+                        "constant": false,
+                        "readOnly": false,
+                        "draftable": false,
+                        "maxlength": "255",
+                        "allowEmpty": false,
+                        "critical": true
+                    },
+                    "label": "Path Part",
+                    "objectProperty": "pathPart",
+                    "entityProperty": "pathPart"
+                },
+                "n2nLocale": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\l10n\\N2nLocaleEiProp",
+                    "props": {
+                        "displayInOverview": true,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": true,
+                        "draftable": false
+                    },
+                    "label": "Sprache",
+                    "objectProperty": "n2nLocale",
+                    "entityProperty": "n2nLocale"
+                },
+                "intro": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\string\\StringEiProp",
+                    "props": {
+                        "displayInOverview": false,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": false,
+                        "draftable": false,
+                        "maxlength": "255",
+                        "multiline": true
+                    },
+                    "label": "Intro",
+                    "objectProperty": "intro",
+                    "entityProperty": "intro"
+                },
+                "fileImage": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\file\\FileEiProp",
+                    "props": {
+                        "displayInOverview": true,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": false,
+                        "draftable": false,
+                        "allowedExtensions": [
+                            "png",
+                            "jpg",
+                            "jpeg",
+                            "gif"
+                        ],
+                        "dimensionImportMode": "all",
+                        "extraThumbDimensions": [],
+                        "checkImageResourceMemory": true,
+                        "multiUploadAvailable": false
+                    },
+                    "label": "Bild",
+                    "objectProperty": "fileImage",
+                    "entityProperty": "fileImage"
+                },
+                "createdDate": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\date\\DateTimeEiProp",
+                    "props": {
+                        "displayInOverview": true,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": false,
+                        "draftable": false,
+                        "dateStyle": "medium",
+                        "timeStyle": "none"
+                    },
+                    "label": "Erstellt am",
+                    "objectProperty": "createdDate",
+                    "entityProperty": "createdDate"
+                },
+                "contentItems": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\ci\\ContentItemsEiProp",
+                    "props": {
+                        "displayInOverview": false,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "draftable": false,
+                        "targetExtensions": [],
+                        "targetRemovalStrategy": "prevent",
+                        "orphansAllowed": false,
+                        "reduced": true,
+                        "panels": [
+                            {
+                                "panelName": "main",
+                                "panelLabel": "Inhalt",
+                                "allowedContentItemIds": {
+                                    "ci-ci-html-snippet": "ci-ci-html-snippet",
+                                    "ci-ci-attachment": "ci-ci-attachment",
+                                    "ci-ci-two-columns": "ci-ci-two-columns",
+                                    "ci-ci-three-columns": "ci-ci-three-columns",
+                                    "ci-ci-cke": "ci-ci-cke",
+                                    "ci-ci-youtube": "ci-ci-youtube",
+                                    "ci-ci-article": "ci-ci-article",
+                                    "ci-ci-image": "ci-ci-image"
+                                },
+                                "min": "0"
+                            }
+                        ]
+                    },
+                    "label": "Inhalt",
+                    "objectProperty": "contentItems",
+                    "entityProperty": "contentItems"
+                },
+                "online": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\bool\\OnlineEiProp",
+                    "props": {
+                        "displayInOverview": false,
+                        "displayInDetailView": true,
+                        "displayInEditView": false,
+                        "displayInAddView": true,
+                        "readOnly": false,
+                        "draftable": false
+                    },
+                    "label": "Online",
+                    "objectProperty": "online",
+                    "entityProperty": "online"
+                }
+            },
+            "commands": {
+                "overviewEiCommand": {
+                    "class": "rocket\\impl\\ei\\component\\command\\common\\OverviewEiCommand",
+                    "props": {
+                        "pageSize": "30"
+                    }
+                },
+                "detailEiCommand": {
+                    "class": "rocket\\impl\\ei\\component\\command\\common\\DetailEiCommand",
+                    "props": []
+                },
+                "editEiCommand": {
+                    "class": "rocket\\impl\\ei\\component\\command\\common\\EditEiCommand",
+                    "props": []
+                },
+                "addEiCommand": {
+                    "class": "rocket\\impl\\ei\\component\\command\\common\\AddEiCommand",
+                    "props": []
+                },
+                "deleteEiCommand": {
+                    "class": "rocket\\impl\\ei\\component\\command\\common\\DeleteEiCommand",
+                    "props": []
+                }
+            },
+            "partialControlOrder": [],
+            "overallControlOrder": [],
+            "entryControlOrder": []
+        },
+        "blog-blog-page-controller": {
+            "nature": "entity",
+            "entity": "blog\\bo\\BlogPageController",
+            "dataSourceName": null,
+            "label": "Blog-Seite",
+            "pluralLabel": "Blog-Seite",
+            "iconType": "fa fa-book",
+            "filterData": {
+                "useAnd": true,
+                "items": [],
+                "groups": []
+            },
+            "defaultSort": [],
+            "props": [],
+            "commands": [],
+            "partialControlOrder": [],
+            "overallControlOrder": [],
+            "entryControlOrder": []
+        }
+    },
+    "launchPads": {
+        "blog-blog-article": []
+    }
+}
