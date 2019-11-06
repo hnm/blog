@@ -1,7 +1,7 @@
 <?php
 namespace blog\ui;
 
-use n2nutil\bootstrap\img\MimgBs;
+use bootstrap\img\MimgBs;
 use n2n\impl\web\ui\view\html\img\Mimg;
 
 class BlogMimg {
