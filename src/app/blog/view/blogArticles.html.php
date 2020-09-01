@@ -1,7 +1,7 @@
 <?php
 	use n2n\impl\web\ui\view\html\HtmlView;
 	use page\ui\PageHtmlBuilder;
-use blog\model\BlogDao;
+	use blog\model\BlogDao;
 	
 	$view = HtmlView::view($view);
 	$html = HtmlView::html($view);
