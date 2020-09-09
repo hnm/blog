@@ -17,11 +17,9 @@
 <?php $pageHtml->contentItems('top') ?>
 
 <?php if (!empty($blogArticles = $blogDao->getBlogArticles())): ?>
-    <div class="row justify-content-center blog-articles">
-    	<?php foreach ($blogArticles as $blogArticle): ?>
-    		<?php $view->import('inc\blogArticleNested.html', ['blogArticle' => $blogArticle]) ?>
-    	<?php endforeach ?>
-    </div>
+	<?php foreach ($blogArticles as $blogArticle): ?>
+		<?php $view->import('inc\blogArticleNested.html', ['blogArticle' => $blogArticle]) ?>
+	<?php endforeach ?>
 <?php endif ?>
 
 <?php $pageHtml->contentItems('bottom') ?>
