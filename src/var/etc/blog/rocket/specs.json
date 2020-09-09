@@ -1,11 +1,11 @@
 {
     "types": {
-    	"blog-blog-article": {
+        "blog-blog-article": {
             "nature": "entity",
             "entity": "blog\\bo\\BlogArticle",
             "dataSourceName": null,
-            "label": "Blog Artikel",
-            "pluralLabel": "Blog Artikel",
+            "label": "Artikel",
+            "pluralLabel": "Artikel",
             "iconType": null,
             "filterData": {
                 "useAnd": true,
@@ -148,12 +148,12 @@
                                 "panelLabel": "Inhalt",
                                 "allowedContentItemIds": {
                                     "ci-ci-html-snippet": "ci-ci-html-snippet",
-                                    "ci-ci-attachment": "ci-ci-attachment",
                                     "ci-ci-two-columns": "ci-ci-two-columns",
                                     "ci-ci-three-columns": "ci-ci-three-columns",
                                     "ci-ci-cke": "ci-ci-cke",
                                     "ci-ci-youtube": "ci-ci-youtube",
                                     "ci-ci-article": "ci-ci-article",
+                                    "ci-ci-attachment": "ci-ci-attachment",
                                     "ci-ci-image": "ci-ci-image"
                                 },
                                 "min": "0"
@@ -196,7 +196,9 @@
                 },
                 "addEiCommand": {
                     "class": "rocket\\impl\\ei\\component\\command\\common\\AddEiCommand",
-                    "props": []
+                    "props": {
+                        "duplicateAllowed": true
+                    }
                 },
                 "deleteEiCommand": {
                     "class": "rocket\\impl\\ei\\component\\command\\common\\DeleteEiCommand",
@@ -227,6 +229,7 @@
             "entryControlOrder": []
         }
     },
+    "eiTypeExtensions": [],
     "launchPads": {
         "blog-blog-article": []
     }

@@ -8,6 +8,7 @@
         "hnm/ci": "dev-master"
     },
 	"require-dev" : {
-		"n2n/hangar" : "dev-master"
+		"n2n/hangar" : "dev-master",
+        "hnm/bootstrap": "dev-master"
 	}
 }
