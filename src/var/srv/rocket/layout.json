@@ -3,7 +3,8 @@
     "menuGroups": {
         "Inhalte": {
             "blog-blog-article": null,
-            "page-page": null
+            "page-page": null,
+            "blog-blog-category": null
         }
     }
 }

@@ -22,7 +22,7 @@
 	<?php $html->image($fileImage, BlogMimg::articleDetail(), ['class' => 'img-fluid mb-4']) ?>
 <?php endif ?>
 
-<h1 class="text-center"><?php $html->out($blogArticle->getTitle()) ?></h1>
+<h1><?php $html->out($blogArticle->getTitle()) ?></h1>
 
 <?php if (null !== ($intro = $blogArticle->getIntro())): ?>
 	<p class="lead"><?php $html->out($intro) ?></p>

@@ -12,6 +12,7 @@ use n2n\l10n\N2nLocale;
 use n2n\persistence\orm\annotation\AnnoManagedFile;
 use n2n\persistence\orm\annotation\AnnoOneToMany;
 use n2n\persistence\orm\annotation\AnnoDateTime;
+use n2n\persistence\orm\annotation\AnnoManyToMany;
 
 class BlogArticle extends ObjectAdapter {
 	private static function _annos(AnnoInit $ai) {
@@ -19,9 +20,11 @@ class BlogArticle extends ObjectAdapter {
 		$ai->p('fileImage', new AnnoManagedFile());
 		$ai->p('contentItems', new AnnoOneToMany(ContentItem::getClass(), null, \n2n\persistence\orm\CascadeType::ALL, null, true));
 		$ai->p('createdDate', new AnnoDateTime());
+		$ai->p('categories', new AnnoManyToMany(BlogCategory::getClass()));
 	}
 
 	private $id;
+	private $categories;
 	private $title;
 	private $pathPart;
 	private $fileImage;
@@ -30,7 +33,7 @@ class BlogArticle extends ObjectAdapter {
 	private $contentItems;
 	private $n2nLocale;
 	private $online = true;
-	
+
 	public function __construct() {
 		$this->createdDate = new \DateTime();
 	}
@@ -106,11 +109,22 @@ class BlogArticle extends ObjectAdapter {
 		return $this->online;
 	}
 
-	public function setOnline(bool $online = false) {
+	public function setOnline(bool $online) {
 		$this->online = $online;
 	}
-	
+
 	public function hasImage() {
 		return (bool) (null !== $this->fileImage);
+	}
+
+	/**
+	 * @return BlogCategory[]
+	 */
+	public function getCategories() {
+		return $this->categories;
+	}
+
+	public function setCategories($categories) {
+		$this->categories = $categories;
 	}
 }

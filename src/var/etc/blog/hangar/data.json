@@ -1,0 +1,152 @@
+{
+    "blog\\bo\\BlogCategoryT": {
+        "id": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\scalar\\IntegerPropDef",
+            "props": {
+                "size": "32",
+                "signed": true
+            }
+        },
+        "name": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\scalar\\StringPropDef",
+            "props": {
+                "length": "255",
+                "charset": null
+            }
+        },
+        "blogCategory": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\relation\\ManyToOnePropDef",
+            "props": {
+                "targetEntityClass": "blog\\bo\\BlogCategory",
+                "cascadeType": [],
+                "fetchType": "lazy"
+            }
+        },
+        "n2nLocale": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\N2nLocalePropDef",
+            "props": {
+                "required": true
+            }
+        }
+    },
+    "blog\\bo\\BlogCategory": {
+        "id": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\scalar\\IntegerPropDef",
+            "props": {
+                "size": "32",
+                "signed": true
+            }
+        },
+        "blogCategoryTs": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\relation\\OneToManyPropDef",
+            "props": {
+                "targetEntityClass": "blog\\bo\\BlogCategoryT",
+                "mappedBy": "blogCategory",
+                "cascadeType": {
+                    "1": "1",
+                    "2": "2",
+                    "4": "4",
+                    "8": "8",
+                    "16": "16"
+                },
+                "fetchType": "lazy",
+                "orphanRemoval": true
+            }
+        },
+        "orderIndex": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\scalar\\IntegerPropDef",
+            "props": {
+                "size": "32",
+                "signed": true
+            }
+        },
+        "articles": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\relation\\ManyToManyPropDef",
+            "props": {
+                "targetEntityClass": "blog\\bo\\BlogArticle",
+                "mappedBy": "categories",
+                "cascadeType": [],
+                "fetchType": "lazy"
+            }
+        }
+    },
+    "blog\\bo\\BlogArticle": {
+        "id": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\scalar\\IntegerPropDef",
+            "props": {
+                "size": "32",
+                "signed": true
+            }
+        },
+        "categories": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\relation\\ManyToManyPropDef",
+            "props": {
+                "targetEntityClass": "blog\\bo\\BlogCategory",
+                "mappedBy": null,
+                "cascadeType": [],
+                "fetchType": "lazy"
+            }
+        },
+        "title": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\scalar\\StringPropDef",
+            "props": {
+                "length": "255",
+                "charset": null
+            }
+        },
+        "pathPart": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\scalar\\StringPropDef",
+            "props": {
+                "length": "255",
+                "charset": null
+            }
+        },
+        "fileImage": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\ManagedFilePropDef",
+            "props": {
+                "length": "255"
+            }
+        },
+        "intro": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\scalar\\StringPropDef",
+            "props": {
+                "length": "255",
+                "charset": null
+            }
+        },
+        "createdDate": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\DateTimePropDef",
+            "props": {
+                "required": false
+            }
+        },
+        "contentItems": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\relation\\OneToManyPropDef",
+            "props": {
+                "targetEntityClass": "rocket\\impl\\ei\\component\\prop\\ci\\model\\ContentItem",
+                "mappedBy": null,
+                "cascadeType": {
+                    "1": "1",
+                    "2": "2",
+                    "4": "4",
+                    "8": "8",
+                    "16": "16"
+                },
+                "fetchType": "lazy",
+                "orphanRemoval": true
+            }
+        },
+        "n2nLocale": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\N2nLocalePropDef",
+            "props": {
+                "required": false
+            }
+        },
+        "online": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\scalar\\BooleanPropDef",
+            "props": {
+                "required": true
+            }
+        }
+    }
+}
