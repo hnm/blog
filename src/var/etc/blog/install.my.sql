@@ -9,7 +9,7 @@ CREATE TABLE `blog_article` (
 	`n2n_locale` VARCHAR(12) NULL DEFAULT NULL, 
 	`online` TINYINT UNSIGNED NULL DEFAULT NULL, 
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci ;
 
 
 DROP TABLE IF EXISTS `blog_article_categories`;
@@ -25,7 +25,7 @@ CREATE TABLE `blog_article_content_items` (
 	`blog_article_id` INT UNSIGNED NOT NULL, 
 	`content_item_id` INT UNSIGNED NOT NULL, 
 	PRIMARY KEY (`blog_article_id`, `content_item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci ;
 
 
 DROP TABLE IF EXISTS `blog_category`;
@@ -51,4 +51,4 @@ DROP TABLE IF EXISTS `blog_page_controller`;
 CREATE TABLE `blog_page_controller` ( 
 	`id` INT NOT NULL, 
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci ;
