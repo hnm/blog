@@ -1,9 +1,6 @@
 {
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "config" : {
-		"vendor-dir" : "src/vendor"
-	},
     "require": {
         "php": ">=7.0",
         "n2n/n2n-composer-module-installer" : "^7.1.3",
@@ -14,17 +11,6 @@
     },
 	"require-dev" : {
 		"n2n/hangar" : "dev-master",
-        "hnm/bootstrap": "dev-master",
-		"phpunit/phpunit" : "^9.5"
-	},
-	"autoload" : {
-		"psr-4" : {
-			"blog\\" : "src/app/blog"
-		}
-	},
-	"autoload-dev" : {
-		"psr-4" : {
-			"blog\\" : "src/test/blog"
-		}
+        "hnm/bootstrap": "dev-master"
 	}
 }
