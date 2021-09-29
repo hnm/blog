@@ -16,9 +16,19 @@
         "n2n/n2n-composer-module-installer": "^7.1",
         "n2n/rocket": "^2.0.16 || ^3"
     },
+    "require-dev" : {
+		"n2n/hangar" : "dev-master",
+        "hnm/bootstrap": "dev-master",
+		"phpunit/phpunit" : "^9.5"
+	},
     "autoload": {
         "psr-4": {
             "blog\\": "src/app/blog"
         }
-    }
+    },
+	"autoload-dev" : {
+		"psr-4" : {
+			"blog\\" : "src/test/blog"
+		}
+	}
 }
