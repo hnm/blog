@@ -20,7 +20,7 @@ class BlogArticle extends ObjectAdapter {
 		$ai->c(new AnnoEntityListeners(ResponseCacheClearer::getClass()), new AnnoTable('blog_article'));
 		$ai->p('fileImage', new AnnoManagedFile());
 		$ai->p('contentItems', new AnnoOneToMany(ContentItem::getClass(), null, \n2n\persistence\orm\CascadeType::ALL, null, true), 
-				new AnnoOrderBy(['orderIndex' => 'DESC']));
+				new AnnoOrderBy(['orderIndex' => 'ASC']));
 		$ai->p('createdDate', new AnnoDateTime());
 		$ai->p('categories', new AnnoManyToMany(BlogCategory::getClass()));
 	}
