@@ -13,12 +13,14 @@ use n2n\persistence\orm\annotation\AnnoManagedFile;
 use n2n\persistence\orm\annotation\AnnoOneToMany;
 use n2n\persistence\orm\annotation\AnnoDateTime;
 use n2n\persistence\orm\annotation\AnnoManyToMany;
+use n2n\persistence\orm\annotation\AnnoOrderBy;
 
 class BlogArticle extends ObjectAdapter {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoEntityListeners(ResponseCacheClearer::getClass()), new AnnoTable('blog_article'));
 		$ai->p('fileImage', new AnnoManagedFile());
-		$ai->p('contentItems', new AnnoOneToMany(ContentItem::getClass(), null, \n2n\persistence\orm\CascadeType::ALL, null, true));
+		$ai->p('contentItems', new AnnoOneToMany(ContentItem::getClass(), null, \n2n\persistence\orm\CascadeType::ALL, null, true), 
+				new AnnoOrderBy(['orderIndex' => 'DESC']));
 		$ai->p('createdDate', new AnnoDateTime());
 		$ai->p('categories', new AnnoManyToMany(BlogCategory::getClass()));
 	}
