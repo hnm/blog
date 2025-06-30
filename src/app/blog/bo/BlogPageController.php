@@ -8,31 +8,55 @@ use n2n\reflection\annotation\AnnoInit;
 use n2n\persistence\orm\annotation\AnnoEntityListeners;
 use n2n\persistence\orm\annotation\AnnoTable;
 use page\bo\PageController;
-use n2n\web\http\PageNotFoundException;
 use blog\model\BlogDao;
+use n2n\persistence\orm\annotation\AnnoManyToOne;
+use blog\controller\BlogController;
+use n2n\util\uri\Url;
+use n2n\l10n\N2nLocale;
+use page\model\nav\SitemapItem;
+use n2n\persistence\orm\FetchType;
+use rocket\attribute\EiType;
 
+#[EiType]
 class BlogPageController extends PageController {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoEntityListeners(ResponseCacheClearer::getClass()), new AnnoTable('blog_page_controller'));
-		$ai->m('blog', new AnnoPage(), new AnnoPageCiPanels('top', 'bottom'));
+		$ai->m('blog', new AnnoPage(), new AnnoPageCiPanels('top', 'main', 'bottom'));
+		$ai->p('blogCategory', new AnnoManyToOne(BlogCategory::getClass(), null, FetchType::EAGER));
 	}
 
-	public function blog(BlogDao $blogDao, $pathPart = null) {	
-		$this->assignHttpCacheControl(new \DateInterval('PT30M'));
+	private $numPerPage;
+	private $blogCategory;
+
+	public function blog(BlogController $blogController, ?array $delegateParams = null) {
+		$blogController->setNumsPerPage($this->numPerPage);
+		$blogController->setBlogCategory($this->blogCategory);
 		
-		if (null !== $pathPart) {
-			$this->assignResponseCacheControl(new \DateInterval('P30D'));
-			$blogArticle = $blogDao->getBlogArticleByPathPart($pathPart);
-			
-			if (null === $blogArticle) {
-				throw new PageNotFoundException('Invalid blog article path part: ' . $pathPart);
-			}
-			
-			$this->forward('..\view\blogArticle.html', ['blogArticle' => $blogArticle]);
-			return;
+		$this->delegate($blogController);
+	}
+
+	public function getNumPerPage() {
+		return $this->numPerPage;
+	}
+
+	public function setNumPerPage(?int $numPerPage = null) {
+		$this->numPerPage = $numPerPage;
+	}
+
+	public function _createSitemapItems(Url $baseUrl, N2nLocale $n2nLocale, BlogDao $blogDao) {
+		
+		$sitemapItems = array();
+		foreach ($blogDao->getNews($n2nLocale) as $newsItem) {
+			$sitemapItems[] = new SitemapItem($baseUrl->pathExt($newsItem->getPathPart()));
 		}
-		
-		$this->assignResponseCacheControl(new \DateInterval('P1D'));
-		$this->forward('..\view\blogArticles.html');
+		return $sitemapItems;
+	}
+
+	public function getBlogCategory() {
+		return $this->blogCategory;
+	}
+
+	public function setBlogCategory(?BlogCategory $blogCategory = null) {
+		$this->blogCategory = $blogCategory;
 	}
 }

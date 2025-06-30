@@ -8,7 +8,11 @@ use n2n\persistence\orm\annotation\AnnoEntityListeners;
 use rocket\impl\ei\component\prop\translation\Translatable;
 use n2n\reflection\ObjectAdapter;
 use n2n\persistence\orm\annotation\AnnoManyToOne;
+use rocket\attribute\EiType;
+use rocket\attribute\EiPreset;
 
+#[EiType]
+#[EiPreset(editProps: ['name'])]
 class BlogCategoryT extends ObjectAdapter implements Translatable {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoEntityListeners(ResponseCacheClearer::getClass()));
@@ -40,7 +44,7 @@ class BlogCategoryT extends ObjectAdapter implements Translatable {
 		return $this->name;
 	}
 
-	public function setName(string $name = null) {
+	public function setName(?string $name = null) {
 		$this->name = $name;
 	}
 
@@ -48,7 +52,7 @@ class BlogCategoryT extends ObjectAdapter implements Translatable {
 		return $this->blogCategory;
 	}
 
-	public function setBlogCategory(BlogCategory $blogCategory = null) {
+	public function setBlogCategory(?BlogCategory $blogCategory = null) {
 		$this->blogCategory = $blogCategory;
 	}
 }

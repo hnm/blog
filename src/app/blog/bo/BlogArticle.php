@@ -13,25 +13,34 @@ use n2n\persistence\orm\annotation\AnnoManagedFile;
 use n2n\persistence\orm\annotation\AnnoOneToMany;
 use n2n\persistence\orm\annotation\AnnoDateTime;
 use n2n\persistence\orm\annotation\AnnoManyToMany;
+use rocket\attribute\EiType;
+use rocket\attribute\EiMenuItem;
+use rocket\attribute\EiPreset;
+use rocket\op\spec\setup\EiPresetMode;
 
+#[EiType]
+#[EiMenuItem('Artikel', 'Inhalt')]
+#[EiPreset(EiPresetMode::EDIT)]
 class BlogArticle extends ObjectAdapter {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoEntityListeners(ResponseCacheClearer::getClass()), new AnnoTable('blog_article'));
-		$ai->p('fileImage', new AnnoManagedFile());
 		$ai->p('contentItems', new AnnoOneToMany(ContentItem::getClass(), null, \n2n\persistence\orm\CascadeType::ALL, null, true));
 		$ai->p('createdDate', new AnnoDateTime());
 		$ai->p('categories', new AnnoManyToMany(BlogCategory::getClass()));
+		$ai->p('fileTitleImage', new AnnoManagedFile());
+		$ai->p('fileListImage', new AnnoManagedFile());
 	}
 
 	private $id;
 	private $categories;
 	private $title;
 	private $pathPart;
-	private $fileImage;
+	private $fileTitleImage;
+	private $fileListImage;
 	private $intro;
 	private $createdDate;
 	private $contentItems;
-	private $n2nLocale;
+	private ?N2nLocale $n2nLocale = null;
 	private $online = true;
 
 	public function __construct() {
@@ -50,7 +59,7 @@ class BlogArticle extends ObjectAdapter {
 		return $this->title;
 	}
 
-	public function setTitle(string $title = null) {
+	public function setTitle(?string $title = null) {
 		$this->title = $title;
 	}
 
@@ -58,23 +67,15 @@ class BlogArticle extends ObjectAdapter {
 		return $this->pathPart;
 	}
 
-	public function setPathPart(string $pathPart = null) {
+	public function setPathPart(?string $pathPart = null) {
 		$this->pathPart = $pathPart;
-	}
-
-	public function getFileImage() {
-		return $this->fileImage;
-	}
-
-	public function setFileImage(File $fileImage = null) {
-		$this->fileImage = $fileImage;
 	}
 
 	public function getIntro() {
 		return $this->intro;
 	}
 
-	public function setIntro(string $intro = null) {
+	public function setIntro(?string $intro = null) {
 		$this->intro = $intro;
 	}
 
@@ -82,7 +83,7 @@ class BlogArticle extends ObjectAdapter {
 		return $this->createdDate;
 	}
 
-	public function setCreatedDate(\DateTime $createdDate = null) {
+	public function setCreatedDate(?\DateTime $createdDate = null) {
 		$this->createdDate = $createdDate;
 	}
 
@@ -97,11 +98,11 @@ class BlogArticle extends ObjectAdapter {
 		$this->contentItems = $contentItems;
 	}
 
-	public function getN2nLocale() {
+	public function getN2nLocale(): ?N2nLocale {
 		return $this->n2nLocale;
 	}
 
-	public function setN2nLocale(N2nLocale $n2nLocale = null) {
+	public function setN2nLocale(?N2nLocale $n2nLocale = null) {
 		$this->n2nLocale = $n2nLocale;
 	}
 
@@ -114,7 +115,7 @@ class BlogArticle extends ObjectAdapter {
 	}
 
 	public function hasImage() {
-		return (bool) (null !== $this->fileImage);
+		return (bool) (null !== $this->fileTitleImage);
 	}
 
 	/**
@@ -126,5 +127,21 @@ class BlogArticle extends ObjectAdapter {
 
 	public function setCategories($categories) {
 		$this->categories = $categories;
+	}
+
+	public function getFileTitleImage() {
+		return $this->fileTitleImage;
+	}
+
+	public function setFileTitleImage(?File $fileTitleImage = null) {
+		$this->fileTitleImage = $fileTitleImage;
+	}
+
+	public function getFileListImage() {
+		return $this->fileListImage;
+	}
+
+	public function setFileListImage(?File $fileListImage = null) {
+		$this->fileListImage = $fileListImage;
 	}
 }
