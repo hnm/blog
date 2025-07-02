@@ -12,7 +12,6 @@ use rocket\attribute\EiMenuItem;
 use rocket\attribute\EiPreset;
 use rocket\op\spec\setup\EiPresetMode;
 use n2n\persistence\orm\CascadeType;
-use n2n\persistence\orm\attribute\OneToMany;
 
 #[EiType]
 #[EiMenuItem('Kategorie', 'Inhalt')]
@@ -25,14 +24,9 @@ class BlogCategory extends ObjectAdapter {
 	}
 
 	private $id;
-	#[OneToMany(BlogCategoryT::class, 'blogCategory', CascadeType::ALL, null, true)]
-	private \ArrayObject $blogCategoryTs;
+	private $blogCategoryTs;
 	private $orderIndex;
 	private $articles;
-
-	public function __construct() {
-		$this->blogCategoryTs = new \ArrayObject();
-	}
 
 	public function getId() {
 		return $this->id;

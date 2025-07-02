@@ -20,7 +20,7 @@ use rocket\op\spec\setup\EiPresetMode;
 
 #[EiType]
 #[EiMenuItem('Artikel', 'Inhalt')]
-#[EiPreset(EiPresetMode::EDIT)]
+#[EiPreset(EiPresetMode::EDIT, excludeProps: ['id'])]
 class BlogArticle extends ObjectAdapter {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoEntityListeners(ResponseCacheClearer::getClass()), new AnnoTable('blog_article'));
@@ -40,7 +40,8 @@ class BlogArticle extends ObjectAdapter {
 	private $intro;
 	private $createdDate;
 	private $contentItems;
-	private ?N2nLocale $n2nLocale = null;
+	#[\n2n\persistence\orm\attribute\N2nLocale]
+	private $n2nLocale;
 	private $online = true;
 
 	public function __construct() {
@@ -98,7 +99,7 @@ class BlogArticle extends ObjectAdapter {
 		$this->contentItems = $contentItems;
 	}
 
-	public function getN2nLocale(): ?N2nLocale {
+	public function getN2nLocale() {
 		return $this->n2nLocale;
 	}
 
