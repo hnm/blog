@@ -43,7 +43,7 @@ class BlogCategory extends ObjectAdapter {
 		return $this->orderIndex;
 	}
 
-	public function setOrderIndex(int $orderIndex = null) {
+	public function setOrderIndex(?int $orderIndex = null) {
 		$this->orderIndex = $orderIndex;
 	}
 

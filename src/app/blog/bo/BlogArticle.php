@@ -50,7 +50,7 @@ class BlogArticle extends ObjectAdapter {
 		return $this->title;
 	}
 
-	public function setTitle(string $title = null) {
+	public function setTitle(?string $title = null) {
 		$this->title = $title;
 	}
 
@@ -58,7 +58,7 @@ class BlogArticle extends ObjectAdapter {
 		return $this->pathPart;
 	}
 
-	public function setPathPart(string $pathPart = null) {
+	public function setPathPart(?string $pathPart = null) {
 		$this->pathPart = $pathPart;
 	}
 
@@ -66,7 +66,7 @@ class BlogArticle extends ObjectAdapter {
 		return $this->fileImage;
 	}
 
-	public function setFileImage(File $fileImage = null) {
+	public function setFileImage(?File $fileImage = null) {
 		$this->fileImage = $fileImage;
 	}
 
@@ -74,7 +74,7 @@ class BlogArticle extends ObjectAdapter {
 		return $this->intro;
 	}
 
-	public function setIntro(string $intro = null) {
+	public function setIntro(?string $intro = null) {
 		$this->intro = $intro;
 	}
 
@@ -82,7 +82,7 @@ class BlogArticle extends ObjectAdapter {
 		return $this->createdDate;
 	}
 
-	public function setCreatedDate(\DateTime $createdDate = null) {
+	public function setCreatedDate(?\DateTime $createdDate = null) {
 		$this->createdDate = $createdDate;
 	}
 
@@ -101,7 +101,7 @@ class BlogArticle extends ObjectAdapter {
 		return $this->n2nLocale;
 	}
 
-	public function setN2nLocale(N2nLocale $n2nLocale = null) {
+	public function setN2nLocale(?N2nLocale $n2nLocale = null) {
 		$this->n2nLocale = $n2nLocale;
 	}
 

@@ -21,7 +21,7 @@ class BlogDao implements RequestScoped {
 	 * @param bool $randomOrder
 	 * @return BlogArticle []
 	 */
-	public function getBlogArticles(int $num = null, array $excludeBlogArticles = null, bool $randomOrder = false) {
+	public function getBlogArticles(?int $num = null, ?array $excludeBlogArticles = null, bool $randomOrder = false) {
 		$criteria = $this->em->createNqlCriteria('SELECT ba FROM BlogArticle ba WHERE ba.online = :online AND ba.n2nLocale = :n2nLocale', 
 				['online' => true, 'n2nLocale' => $this->request->getN2nLocale()])->limit($num);
 		if (!empty($excludeBlogArticles)) {

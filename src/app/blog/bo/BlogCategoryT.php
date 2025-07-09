@@ -40,7 +40,7 @@ class BlogCategoryT extends ObjectAdapter implements Translatable {
 		return $this->name;
 	}
 
-	public function setName(string $name = null) {
+	public function setName(?string $name = null) {
 		$this->name = $name;
 	}
 
@@ -48,7 +48,7 @@ class BlogCategoryT extends ObjectAdapter implements Translatable {
 		return $this->blogCategory;
 	}
 
-	public function setBlogCategory(BlogCategory $blogCategory = null) {
+	public function setBlogCategory(?BlogCategory $blogCategory = null) {
 		$this->blogCategory = $blogCategory;
 	}
 }
